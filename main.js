@@ -23,6 +23,7 @@ let score = 0;
 
 let btnActive = false;
 
+
 // GAMEPLAY
 
 iconBtn.forEach((button)  => {

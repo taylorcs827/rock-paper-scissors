@@ -27,11 +27,11 @@
 .attribution {
     font-size: 11px;
     text-align: center;
-  }
+}
 
-  .attribution a {
+.attribution a {
     color: hsl(228, 45%, 44%);
-  }
+}
 
 /* LAYOUT */
 
@@ -44,15 +44,15 @@ body {
 }
 
 .container {
-   position: relative;
-   max-width: 800px;
-   margin: 0 auto;
-   padding-top: 2em;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 2em;
 }
 
 /* HEADER LAYOUT */
 
-header { 
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -96,8 +96,9 @@ header {
 .choice-container {
     position: relative;
     display: grid;
-    grid-template-columns: (repeat(3, 1fr));
-    grid-template-areas: 
+    grid-gap: 6rem;
+    grid-template-columns: (repeat(2, 1fr));
+    grid-template-areas:
         "scissors paper"
         "rock rock";
     place-items: center;
@@ -107,10 +108,10 @@ header {
 
 .choice-container::before {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 31%;
-    top: 30%;
+    width: 160%;
+    height: 160%;
+    left: 23%;
+    top: 27%;
     content: "";
     background: url(images/bg-triangle.svg) no-repeat;
     z-index: -1;
@@ -126,11 +127,11 @@ header {
 .icon-layout {
     position: relative;
     border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     background: var(--light-text);
     display: grid;
-    place-items:  center;
+    place-items: center;
     box-shadow: inset 0 0.5rem var(--shadow-light);
 }
 
@@ -151,15 +152,13 @@ header {
     transition: opacity .4s ease;
 }
 
-.icon-btn:focus .icon-layout::after{
+.icon-btn:focus .icon-layout::after {
     opacity: 1;
     box-shadow: 0 0 0 2rem #223351;
     z-index: -2;
 }
 
-.icon-layout img {
-    transform: scale(1.5);
-}
+
 
 .icon-layout.paper::before {
     background: linear-gradient(to bottom, var(--paper-one), var(--paper-two));
@@ -193,13 +192,11 @@ header {
 .choice-display {
     display: grid;
     grid-template-columns: (repeat(2, 1fr));
-    grid-template-areas: 
-        "player-heading house-heading"
-        "player-choice house-choice";
+    grid-template-areas:
+        "player-choice house-choice"
+        "player-heading house-heading";
     place-items: center;
     max-width: 1000px;
-    margin: 0 auto;
-
 }
 
 .choice-heading {
@@ -208,7 +205,7 @@ header {
     padding: 3rem 0 7rem;
 }
 
-.choice-heading:first-of-type{
+.choice-heading:first-of-type {
     grid-area: player-heading;
 }
 
@@ -217,26 +214,20 @@ header {
 }
 
 .choice-div {
-    min-width: 10rem;
-    min-height: 10rem;
+    min-width: 8rem;
+    min-height: 8rem;
     background-color: var(--dark-text);
     border-radius: 50%;
     z-index: -1;
     border: 1px solid red;
 }
 
-.choice-div:first-of-type{
+.choice-div:first-of-type {
     grid-area: player-choice;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .choice-div:last-of-type {
     grid-area: house-choice;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .game-result {
@@ -270,21 +261,25 @@ header {
 }
 
 .choice-display.show-winner {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
-    "player-heading . house-heading"
-    "player-choice game-result house-choice";
+    margin-top: 5em;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "player-choice house-choice"
+        "player-heading  house-heading"
+        "game-result game-result";
 }
 
-.winner .icon-layout:after{
-    box-shadow: 0 0 0 40px hsl(227, 33%, 24%), 0 0 0 80px hsl(227, 36%, 22%), 0 0 0 130px hsl(225, 42%, 20%);
+.winner .icon-layout:after {
+    box-shadow: 0 0 0 30px hsl(227, 33%, 24%), 0 0 0 60px hsl(227, 36%, 22%), 0 0 0 100px hsl(225, 42%, 20%);
     animation: winner 1.75s ease forwards;
 }
 
 @keyframes winner {
     from {
         opacity: 0;
-    } to {
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -292,9 +287,9 @@ header {
 /* RULES BTN */
 
 .rules-btn {
-    position: absolute;
-    bottom: 1rem;
-    right: 3rem;
+    display: grid;
+    place-items: center;
+    grid-area: "rules-img";
     outline: none;
     border: 1px solid var(--header-outline);
     border-radius: 10px;
@@ -306,11 +301,12 @@ header {
     font-size: 1.2rem;
     letter-spacing: .1em;
     text-transform: inherit;
+    margin: 2em auto;
 }
 
 .rules-btn:focus,
-.rules.btn:active {
-    background-color: var(--light-text);
+.rules-btn:active {
+    background: var(--light-text);
     color: black;
 }
 
@@ -322,18 +318,13 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     display: grid;
     place-items: center;
-    background: var(--shadow-medium);
+    background: var(--light-text);
     opacity: 0;
     transition: opacity .3s ease-in-out;
     pointer-events: none;
-}
-
-.modal-container {
-    background: var(--light-text);
-    border-radius: 10px;
 }
 
 .modal-header {
@@ -347,6 +338,17 @@ header {
 .modal-heading {
     color: var(--dark-text);
     font-size: 1.5rem;
+    grid-area: "modal-heading";
+}
+
+.modal-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: 
+    "modal-heading"
+    "rules-img"
+    "close-btn";
+    place-items: center;
 }
 
 .close-btn {
@@ -354,6 +356,7 @@ header {
     background: none;
     outline: none;
     cursor: pointer;
+    grid-area: "close-btn";
 }
 
 .rules-img {
@@ -374,5 +377,62 @@ header {
 /* MEDIA QUERIES */
 
 @media (min-width: 600px) {
-    
+    .icon-layout {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .icon-layout img {
+        transform: scale(1.5);
+    }
+
+    .modal {
+        background: var(--shadow-medium);
+        height: 100%;
+    }
+
+    .modal-container {
+        background: var(--light-text);
+        border-radius: 10px;
+    }
+
+    .rules-btn {
+        position: absolute;
+        bottom: 1rem;
+        right: 3rem;
+    }
+
+    .choice-container {
+        grid-gap: 0;
+    }
+
+    .choice-container::before {
+        height: 100%;
+        width: 100%;
+        left: 31%;
+        top: 30%;
+    }
+
+    .choice-display {
+        grid-template-areas:
+            "player-heading house-heading"
+            "player-choice house-choice";
+    }
+
+    .choice-display.show-winner {
+        margin-top: 0;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "player-heading . house-heading"
+            "player-choice game-result house-choice";
+    }
+
+    .choice-div {
+        min-width: 10rem;
+        min-height: 10rem;
+        background-color: var(--dark-text);
+        border-radius: 50%;
+        z-index: -1;
+        border: 1px solid red;
+    }
 }

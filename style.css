@@ -276,6 +276,19 @@ header {
     "player-choice game-result house-choice";
 }
 
+.winner .icon-layout:after{
+    box-shadow: 0 0 0 40px hsl(227, 33%, 24%), 0 0 0 80px hsl(227, 36%, 22%), 0 0 0 130px hsl(225, 42%, 20%);
+    animation: winner 1.75s ease forwards;
+}
+
+@keyframes winner {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
 /* RULES BTN */
 
 .rules-btn {
@@ -356,17 +369,4 @@ header {
 
 .hidden {
     display: none;
-}
-
-.winner .icon-layout:after{
-    box-shadow: 0 0 0 40px hsl(227, 33%, 24%), 0 0 0 80px hsl(227, 36%, 22%), 0 0 0 130px hsl(225, 42%, 20%);
-    animation: winner 1.75s ease forwards;
-}
-
-@keyframes winner {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
 }

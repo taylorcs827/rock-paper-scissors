@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img class="img-title" src="images/logo.svg">
+      <div class="score-container">
+        <div class="score">score</div>
+        <div class="score-num">0</div>
+      </div>
+    </header>
+    <!-- Initial Page -->
+    <main class="choice-container">
+      <button class="icon-btn" data-choice="paper">
+        <div class="icon-layout paper">
+          <img src="images/icon-paper.svg">
+        </div>
+      </button>
+      <button class="icon-btn" data-choice="scissors">
+        <div class="icon-layout scissors">
+          <img src="images/icon-scissors.svg">
+      </button>
+      <button class="icon-btn" data-choice="rock">
+        <div class="icon-layout rock">
+          <img src="images/icon-rock.svg">
+        </div>
+      </button>
+    </main>
+  </div>
+  <!-- CHOICE PAGE -->
+  <section class="choice-display hidden">
+    <h2 class="choice-heading">you picked</h2>
+    <h2 class="choice-heading">the house picked</h2>
+    <div class="choice-div"></div>
+    <div class="game-result hidden">
+      <h3 class="results-info"></h3>
+      <button class="play-again">play again</button>
+    </div>
+    <div class="choice-div"></div>
+  </section>
+  <!-- RULES MODAL -->
+  <button class="rules-btn" tab-index="1">rules</button>
+  <div class="modal show-modal hidden">
+    <div class="modal-container">
+      <header class="modal-header">
+        <h2 class="modal-heading">rules</h2>
+        <button class="close-btn">
+          <img src="images/icon-close.svg">
+        </button>
+      </header>
+      <img class="rules-img" src="images/image-rules.svg">
+    </div>
+  </div>
+</body>
+<script src="main.js" type="module"></script>
+</html>

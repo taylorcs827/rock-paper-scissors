@@ -10,7 +10,7 @@ const modalRules = document.querySelector(".modal");
 const iconBtn = document.querySelectorAll(".icon-btn");
 const choiceContainer = document.querySelector(".choice-container");
 const choiceDisplay = document.querySelector(".choice-display");
-const choiceDiv= document.querySelectorAll(".choice-div");
+const choiceDiv = document.querySelectorAll(".choice-div");
 
 const gameResult = document.querySelector(".game-result");
 const resultsInfo = document.querySelector(".results-info");
@@ -26,7 +26,7 @@ let btnActive = false;
 
 // GAMEPLAY
 
-iconBtn.forEach((button)  => {
+iconBtn.forEach((button) => {
     button.addEventListener('click', () => {
         const choiceName = button.dataset.choice;
         const choice = choices.find((choice) => choice.name === choiceName)
@@ -44,7 +44,7 @@ function houseChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function displayChoices(selection){
+function displayChoices(selection) {
     choiceDiv.forEach((choiceDisplay, index) => {
         setTimeout(() => {
             choiceDisplay.innerHTML = `
@@ -59,12 +59,12 @@ function displayChoices(selection){
     choiceDisplay.classList.toggle("hidden");
 }
 
-function displayWinner(selection){
+function displayWinner(selection) {
     setTimeout(() => {
         const playerWins = isWinner(selection);
         const houseWins = isWinner(selection.reverse());
 
-        if(playerWins){
+        if (playerWins) {
             resultsInfo.innerText = "Player Wins!";
             choiceDiv[0].classList.toggle("winner");
             keepScore(1);
@@ -72,17 +72,17 @@ function displayWinner(selection){
             resultsInfo.innerText = "House Wins!";
             choiceDiv[1].classList.toggle("winner");
             keepScore(-1);
-        } else{
+        } else {
             resultsInfo.innerText = "Draw!";
         }
 
         gameResult.classList.toggle("hidden")
         choiceDisplay.classList.add("show-winner")
-}, 1000);
+    }, 1000);
 
 }
-   
-function isWinner(selection){
+
+function isWinner(selection) {
     return selection[0].beats === selection[1].name;
 }
 
@@ -99,7 +99,7 @@ playAgain.addEventListener("click", () => {
 
     resultsInfo.innerText = "";
     gameResult.classList.toggle("hidden");
-    choiceDiv.classList.toggle("show-winner");
+    choiceDisplay.classList.toggle("show-winner");
 
 });
 
@@ -113,13 +113,16 @@ function keepScore(point) {
 // SHOW/CLOSE MODAL
 
 rulesBtn.addEventListener('click', () => {
-    if (btnActive = true) {
-    modalRules.classList.toggle("hidden");
+    if (!btnActive) {
+        modalRules.classList.toggle("hidden");
+        btnActive = true;
     };
+    
     // FIX BUG THAT BACKGROUND CAN BE CHANGED
 });
 
 closeBtn.addEventListener('click', () => {
+    
     modalRules.classList.toggle("hidden")
     btnActive = false;
 });

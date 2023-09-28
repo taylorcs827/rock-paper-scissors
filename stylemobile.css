@@ -45,7 +45,7 @@ body {
 
 .container {
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding-top: 2em;
 }
@@ -96,7 +96,7 @@ header {
 .choice-container {
     position: relative;
     display: grid;
-    grid-gap: 6rem;
+    /* grid-gap: 5rem; */
     grid-template-columns: (repeat(2, 1fr));
     grid-template-areas:
         "scissors paper"
@@ -108,13 +108,14 @@ header {
 
 .choice-container::before {
     position: absolute;
-    width: 160%;
-    height: 160%;
+    width: 55%;
+    height: 55%;
     left: 23%;
     top: 27%;
     content: "";
     background: url(images/bg-triangle.svg) no-repeat;
     z-index: -1;
+    background-size: contain;
 }
 
 .icon-btn {
@@ -190,13 +191,14 @@ header {
 /* CHOICE LAYOUT */
 
 .choice-display {
+    margin: 5em auto 0;
     display: grid;
     grid-template-columns: (repeat(2, 1fr));
     grid-template-areas:
         "player-choice house-choice"
         "player-heading house-heading";
     place-items: center;
-    max-width: 1000px;
+    max-width: 800px;
 }
 
 .choice-heading {
@@ -219,7 +221,7 @@ header {
     background-color: var(--dark-text);
     border-radius: 50%;
     z-index: -1;
-    border: 1px solid red;
+    margin: 0 4em;
 }
 
 .choice-div:first-of-type {
@@ -261,7 +263,7 @@ header {
 }
 
 .choice-display.show-winner {
-    margin-top: 5em;
+    margin-top: 5em auto 0;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         "player-choice house-choice"
@@ -289,7 +291,7 @@ header {
 .rules-btn {
     display: grid;
     place-items: center;
-    grid-area: "rules-img";
+    grid-area: rules-img;
     outline: none;
     border: 1px solid var(--header-outline);
     border-radius: 10px;
@@ -338,17 +340,7 @@ header {
 .modal-heading {
     color: var(--dark-text);
     font-size: 1.5rem;
-    grid-area: "modal-heading";
-}
-
-.modal-container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-areas: 
-    "modal-heading"
-    "rules-img"
-    "close-btn";
-    place-items: center;
+    grid-area: modal-heading;
 }
 
 .close-btn {
@@ -356,7 +348,7 @@ header {
     background: none;
     outline: none;
     cursor: pointer;
-    grid-area: "close-btn";
+    grid-area: close-btn;
 }
 
 .rules-img {
@@ -376,7 +368,8 @@ header {
 
 /* MEDIA QUERIES */
 
-@media (min-width: 600px) {
+@media (min-width: 750px) {
+
     .icon-layout {
         width: 10rem;
         height: 10rem;
@@ -394,6 +387,11 @@ header {
     .modal-container {
         background: var(--light-text);
         border-radius: 10px;
+        grid-template-areas:
+            "modal-heading"
+            "rules-img"
+            "close-btn";
+        place-items: center;
     }
 
     .rules-btn {
@@ -407,12 +405,17 @@ header {
     }
 
     .choice-container::before {
-        height: 100%;
-        width: 100%;
-        left: 31%;
-        top: 30%;
+        position: absolute;
+        min-width: 60%;
+        height: 60%;
+        left: 29%;
+        top: 27%;
+        content: "";
+        background: url(images/bg-triangle.svg) no-repeat;
+        z-index: -1;
+        background-size: contain;
     }
-
+    
     .choice-display {
         grid-template-areas:
             "player-heading house-heading"

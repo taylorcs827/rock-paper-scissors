@@ -1,31 +1,26 @@
+// Importing choices from an external file named 'choices.js'
 import { choices } from './choices.js'
 
-
-// DOM
-
+// DOM elements
 const rulesBtn = document.querySelector(".rules-btn");
 const closeBtn = document.querySelector(".close-btn");
 const modalRules = document.querySelector(".modal");
-
 const iconBtn = document.querySelectorAll(".icon-btn");
 const choiceContainer = document.querySelector(".choice-container");
 const choiceDisplay = document.querySelector(".choice-display");
 const choiceDiv = document.querySelectorAll(".choice-div");
-
 const gameResult = document.querySelector(".game-result");
 const resultsInfo = document.querySelector(".results-info");
-
 const playAgain = document.querySelector(".play-again");
+const scoreNum = document.querySelector(".score-num");
 
-const scoreNum = document.querySelector(".score-num")
-
+// Initialize score
 let score = 0;
 
+// Initialize button state
 let btnActive = false;
 
-
-// GAMEPLAY
-
+// Event listeners for player's choices
 iconBtn.forEach((button) => {
     button.addEventListener('click', () => {
         const choiceName = button.dataset.choice;
@@ -34,16 +29,19 @@ iconBtn.forEach((button) => {
     });
 });
 
+// Player's choice function
 function choose(choice) {
     const houseChoose = houseChoice();
     displayChoices([choice, houseChoose]);
     displayWinner([choice, houseChoose]);
 }
 
+// Randomly select the house's choice
 function houseChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
+// Display player's and house's choices
 function displayChoices(selection) {
     choiceDiv.forEach((choiceDisplay, index) => {
         setTimeout(() => {
@@ -59,6 +57,7 @@ function displayChoices(selection) {
     choiceDisplay.classList.toggle("hidden");
 }
 
+// Display winner and update score
 function displayWinner(selection) {
     setTimeout(() => {
         const playerWins = isWinner(selection);
@@ -82,12 +81,12 @@ function displayWinner(selection) {
 
 }
 
+// Check if player wins
 function isWinner(selection) {
     return selection[0].beats === selection[1].name;
 }
 
-// PLAY AGAIN
-
+// Event listener for play again button
 playAgain.addEventListener("click", () => {
     choiceContainer.classList.toggle("hidden")
     choiceDisplay.classList.toggle("hidden");
@@ -103,26 +102,21 @@ playAgain.addEventListener("click", () => {
 
 });
 
-// KEEP SCORE
-
+// Keep track of the score
 function keepScore(point) {
     score += point;
     scoreNum.innerText = score;
 }
 
-// SHOW/CLOSE MODAL
-
+// Event listeners to show/close modal
 rulesBtn.addEventListener('click', () => {
     if (!btnActive) {
         modalRules.classList.toggle("hidden");
         btnActive = true;
     };
-    
-    // FIX BUG THAT BACKGROUND CAN BE CHANGED
 });
 
 closeBtn.addEventListener('click', () => {
-    
     modalRules.classList.toggle("hidden")
     btnActive = false;
 });
